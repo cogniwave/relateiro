@@ -1,6 +1,8 @@
 import type { ConfigEnv, UserConfig } from "vite";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
+import Vuetify from "vite-plugin-vuetify";
+
 import { pluginExposeRenderer } from "./vite.base.config";
 
 // https://vitejs.dev/config
@@ -16,9 +18,12 @@ export default defineConfig((env) => {
     build: {
       outDir: `.vite/renderer/${name}`,
     },
-    plugins: [pluginExposeRenderer(name), vue()],
+    plugins: [pluginExposeRenderer(name), vue(), Vuetify({ autoImport: true })],
     resolve: {
       preserveSymlinks: true,
+      alias: {
+        "@": "/src",
+      },
     },
     clearScreen: false,
   } as UserConfig;

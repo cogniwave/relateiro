@@ -26,12 +26,16 @@
  * ```
  */
 
+import { createApp } from "vue";
+import { createVuetify } from "vuetify";
+
+/* eslint-disable-next-line */
+import "vuetify/styles";
 import "./index.css";
 
-import { createApp } from "vue";
 import App from "./App.vue";
 
-createApp(App).mount("#app");
+createApp(App).use(createVuetify()).mount("#app");
 
 console.log(
   '👋 This message is being logged by "renderer.ts", included via Vite'
